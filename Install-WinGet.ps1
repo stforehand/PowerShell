@@ -7,12 +7,12 @@ $URL = (Invoke-WebRequest -Uri $URL).Content | ConvertFrom-Json |
 $LicenseFileURL = 'https://github.com/microsoft/winget-cli/releases/download/v1.2.10271/b0a0692da1034339b76dce1c298a1e42_License1.xml'
 
 # Download WinGet
-Invoke-WebRequest -Uri $URL -OutFile "Setup.msix" -UseBasicParsing
-Invoke-WebRequest -Uri $LicenseFileURL -OutFile  'license.xml' 
+Invoke-WebRequest -Uri $URL -OutFile "C:\Temp\Setup.msix" -UseBasicParsing
+Invoke-WebRequest -Uri $LicenseFileURL -OutFile  'C:\Temp\license.xml' 
 
 # Install WinGet
 # Add-AppxPackage -Path "Setup.msix" -LicensePath .\license.xml
-Add-AppxProvisionedPackage -PackagePath "Setup.msix" -LicensePath 'license.xml' -online 
+Add-AppxProvisionedPackage -PackagePath "C:\Temp\Setup.msix" -LicensePath 'C:\Temp\license.xml' -online 
 
 # Clean up
-Remove-Item "Setup.msix"
+Remove-Item "C:\Temp\Setup.msix"
